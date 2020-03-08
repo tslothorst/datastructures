@@ -29,6 +29,41 @@ int LinearSearch(struct Array* arr,int key){
     return -1;
 }
 
+int BinarySearch(struct Array arr,int key){
+    int low=0;
+    int high=arr.length-1;
+    int mid=(low+high)/2;
+
+    while(low<=high){
+        if(key==arr.A[mid]){
+            return mid;
+        }
+        else if(key<arr.A[mid]){
+            high=mid-1;
+        }
+        else{
+            low=mid+1;
+        }
+    }
+    return -1;
+}
+
+int RBinarySearch(int a[],int low, int high, int key){
+    int mid=(low+high)/2;
+    if(low<=high){
+        if(key==a[mid]){
+            return mid;
+        }
+        else if(key<a[mid]){
+            return RBinarySearch(a,low,mid-1,key);
+        }
+        else{
+            return RBinarySearch(a,mid+1,high,key);
+        }
+    }
+    return -1;
+}
+
 int main() {
     struct Array arr1 = {{2,23,14,5,6,9,8,12},10,8};
     Display(arr1);
