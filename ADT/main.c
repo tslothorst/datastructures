@@ -64,6 +64,13 @@ int RBinarySearch(int a[],int low, int high, int key){
     return -1;
 }
 
+int Get(struct Array arr, int index){
+    if(index>=0 && index<arr.length){
+        return arr.A[index];
+    }
+    return -1;
+}
+
 int main() {
     struct Array arr1 = {{2,23,14,5,6,9,8,12},10,8};
     Display(arr1);
