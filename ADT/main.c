@@ -71,6 +71,12 @@ int Get(struct Array arr, int index){
     return -1;
 }
 
+void Set(struct Array* arr, int index, int x){
+    if(index>=0 && index<arr->length){
+        arr->A[index]=x;
+    }
+}
+
 int main() {
     struct Array arr1 = {{2,23,14,5,6,9,8,12},10,8};
     Display(arr1);
