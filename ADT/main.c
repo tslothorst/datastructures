@@ -105,6 +105,10 @@ int Sum(struct Array arr){
     return s;
 }
 
+float Avg(struct Array arr){
+    return (float)Sum(arr)/arr.length;
+}
+
 int main() {
     struct Array arr1 = {{2,23,14,5,6,9,8,12},10,8};
     Display(arr1);
