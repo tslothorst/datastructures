@@ -97,6 +97,14 @@ int Min(struct Array arr){
     return min;
 }
 
+int Sum(struct Array arr){
+    int s = 0;
+    for (int i = 0; i < arr.length; ++i) {
+        s+=arr.A[i];
+    }
+    return s;
+}
+
 int main() {
     struct Array arr1 = {{2,23,14,5,6,9,8,12},10,8};
     Display(arr1);
