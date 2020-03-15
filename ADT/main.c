@@ -111,7 +111,7 @@ float Avg(struct Array arr){
 }
 
 void Reverse(struct Array* arr){
-    int* B=(int*)malloc(arr->length* sizeof(int));
+    int* B=(int*)malloc(arr->length*sizeof(int));
     for (int i = arr->length-1,j=0; i>=0 ; --i,j++) {
         B[j]=arr->A[i];
     }
@@ -124,6 +124,19 @@ void Reverse2(struct Array* arr){
     for (int i = 0,j=arr->length-1; i < j ; ++i, ++j) {
         Swap(&arr->A[i],&arr->A[j]);
     }
+}
+
+void InsertSort(struct Array* arr,int x){
+    if(arr->length==arr->size){
+        return;
+    }
+    int i = arr->length-1;
+    while(i >= 0 && arr->A[i]>x){
+        arr->A[i+1]=arr->A[i];
+        i--;
+    }
+    arr->A[i+1]=x;
+    arr->length++;
 }
 
 int main() {
