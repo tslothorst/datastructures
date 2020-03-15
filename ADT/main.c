@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 struct Array{
     int A[10];
@@ -137,6 +138,25 @@ void InsertSort(struct Array* arr,int x){
     }
     arr->A[i+1]=x;
     arr->length++;
+}
+
+bool IsSorted(struct Array arr){
+    for (int i = 0; i < arr.length-1; ++i) {
+        if(arr.A[i]>arr.A[i+1]){
+            return false;
+        }
+    }
+    return true;
+}
+
+void Rearrange(struct Array* arr){
+    int i = 0;
+    int j = arr->length-1;
+    while(i<j){
+        while(arr->A[i]>0)i++;
+        while(arr->A[i]<=0)j--;
+        if(i<j)Swap(&arr->A[i],&arr->A[j]);
+    }
 }
 
 int main() {
