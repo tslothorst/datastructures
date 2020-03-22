@@ -271,8 +271,78 @@ struct Array* Difference(struct Array* arr1, struct Array* arr2){
     return arr3;
 }
 
+void Insert(struct Array *arr,int index,int x)
+{
+    int i;
+    if(index>=0 && index <=arr->length)
+    {
+        for(i=arr->length;i>index;i--)
+            arr->A[i]=arr->A[i-1];
+        arr->A[index]=x;
+        arr->length++;
+
+    }
+}
+int Delete(struct Array *arr,int index)
+{
+    int x=0;
+    int i;
+
+    if(index>=0 && index<arr->length)
+    {
+        x=arr->A[index];
+        for(i=index;i<arr->length-1;i++)
+            arr->A[i]=arr->A[i+1];
+        arr->length--;
+        return x;
+    }
+
+    return 0;
+}
+
 int main() {
-    struct Array arr1 = {{2,23,14,5,6,9,8,12},10,8};
-    Display(arr1);
+    struct Array arr1;
+    int ch;
+    int x,index;
+
+    printf("Enter Size of Array");
+    scanf("%d",&arr1.size);
+    arr1.A=(int *)malloc(arr1.size*sizeof(int));
+    arr1.length=0;
+    do
+    {
+        printf("\n\nMenu\n");
+        printf("1. Insert\n");
+        printf("2. Delete\n");
+        printf("3. Search\n");
+        printf("4. Sum\n");
+        printf("5. Display\n");
+        printf("6.Exit\n");
+
+        printf("enter you choice ");
+        scanf("%d",&ch);
+
+        switch(ch)
+        {
+            case 1: printf("Enter an element and index ");
+                scanf("%d%d",&x,&index);
+                Insert(&arr1,index,x);
+                break;
+            case 2: printf("Enter index ");
+                scanf("%d",&index);
+                x=Delete(&arr1,index);
+                printf("Deleted Element is %d\n",x);
+                break;
+            case 3:printf("Enter element to search ");
+                scanf("%d",&x);
+                index=LinearSearch(&arr1,x);
+                printf("Element index %d",index);
+                break;
+            case 4:printf("Sum is %d\n",Sum(arr1));
+                break;
+            case 5:Display(arr1);
+
+        }
+    }while(ch<6);
     return 0;
 }
