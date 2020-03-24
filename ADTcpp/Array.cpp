@@ -1,6 +1,16 @@
 #include <iostream>
 #include "Array.h"
 
+Array::Array(){
+    size = 15;
+    length = 0;
+    A = new int[size];
+}
+
+Array::~Array(){
+    delete[] A;
+}
+
 void Array::Display(){
     std::cout << "\nElements are:\n" << std::endl;
     for (int i = 0; i < length; ++i) {
